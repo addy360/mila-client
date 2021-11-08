@@ -1,5 +1,6 @@
 import Head from "next/head";
+import Nav from "../components/Nav";
 
 export default function Home() {
-  return <h4 className="text-primary">Hello mila-client</h4>;
+  return <Nav />;
 }
