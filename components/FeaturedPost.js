@@ -1,6 +1,6 @@
 import React from "react";
 
-function FeaturedPost() {
+function FeaturedPost({ featuredPost }) {
   return (
     <div class="lg:col-span-4 md:col-span-2 md:h-72">
       <div
@@ -17,7 +17,11 @@ function FeaturedPost() {
       "
       >
         <div class="bg-green-900 overflow-hidden flex-1">
-          <img src="/assets/bg.svg" class="bg-cover h-auto w-full" alt="" />
+          <img
+            src={featuredPost.thumbnail}
+            class="bg-cover h-auto w-full"
+            alt=""
+          />
         </div>
         <div class="flex-1 p-6">
           <span
@@ -42,16 +46,10 @@ function FeaturedPost() {
                         transition-all
                     "
           >
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quos,
-            voluptates.
+            {featuredPost.post_title}
           </a>
 
-          <p class="font-light">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maxime
-            perferendis labore fugit aspernatur consectetur, deleniti, alias,
-            reprehenderit voluptatem repellat laborum repellendus sed ullam odio
-            natus ipsa inventore optio eaque at.
-          </p>
+          <p class="font-light">{featuredPost.post_title}</p>
           <div
             class="mt-5
                     flex
