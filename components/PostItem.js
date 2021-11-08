@@ -1,12 +1,13 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-function PostItem({ post }) {
+function PostItem({ post, handlePostDetail }) {
   return (
     <div className="border hover:shadow-xl rounded overflow-hidden">
       <div className="h-[250px] md:h-[150px] bg-transparent overflow-hidden relative">
         {/* <img
-          src="https://millardayo.com/wp-content/uploads/2021/11/32-660x400.jpg"
+          src={post.thumbnail}
           className="w-full "
           alt=""
         /> */}
@@ -15,14 +16,14 @@ function PostItem({ post }) {
       <div className="h-1/2 p-4">
         <p className="font-light">
           {post.post_title}
-          <a
-            href="#"
-            className="text-primary-600 hover:text-primary-900 transition-all"
+          <button
+            onClick={() => handlePostDetail(post.post_link)}
+            className="ml-3 text-primary-800 hover:text-primary-900 transition-all"
           >
             Read More
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 inline text-primary-600 animate-pulse"
+              className="ml-2 h-5 w-5 inline text-primary-700 animate-pulse"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -37,7 +38,7 @@ function PostItem({ post }) {
                 clip-rule="evenodd"
               />
             </svg>
-          </a>
+          </button>
         </p>
         {/* <div className="mt-5 flex items-center pr-2">
           <img

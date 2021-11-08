@@ -7,3 +7,7 @@ const apiClient = create({ baseURL: BASE_URL });
 export const fetchAllPosts = () => {
   return apiClient.get("/");
 };
+
+export const fetchDetailedPost = (endpoint) => {
+  return apiClient.get(endpoint);
+};

@@ -18,7 +18,7 @@ function FeaturedPost({ featuredPost }) {
       >
         <div class="bg-green-900 overflow-hidden flex-1">
           <img
-            src={featuredPost.thumbnail}
+            src={featuredPost?.thumbnail}
             class="bg-cover h-auto w-full"
             alt=""
           />
@@ -46,10 +46,10 @@ function FeaturedPost({ featuredPost }) {
                         transition-all
                     "
           >
-            {featuredPost.post_title}
+            {featuredPost?.post_title}
           </a>
 
-          <p class="font-light">{featuredPost.post_title}</p>
+          <p class="font-light">{featuredPost?.post_title}</p>
           <div
             class="mt-5
                     flex

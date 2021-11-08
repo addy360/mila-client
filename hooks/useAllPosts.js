@@ -1,17 +1,17 @@
 const { useEffect, useState } = require("react");
-const { fetchAllPosts } = require("../apiServices");
+const { fetchAllPosts, fetchDetailedPost } = require("../apiServices");
 
-export const useAllposts = () => {
+const useApi = (handler) => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   const [isFetching, setIsfetching] = useState(false);
   useEffect(() => {
-    getAllposts();
+    queryData();
   }, []);
 
-  const getAllposts = async () => {
+  const queryData = async () => {
     setIsfetching(true);
-    const res = await fetchAllPosts();
+    const res = await handler();
     setIsfetching(false);
     if (!res.ok) {
       setError(res.originalError);
@@ -26,4 +26,12 @@ export const useAllposts = () => {
     error,
     isFetching,
   };
+};
+
+export const useAllposts = () => {
+  return useApi(fetchAllPosts);
+};
+
+export const usePost = (slug) => {
+  return useApi(() => fetchDetailedPost(slug));
 };

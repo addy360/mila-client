@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAllposts } from "../hooks/useAllPosts";
 import FeaturedPost from "./FeaturedPost";
 import PostItem from "./PostItem";
+import PostItemDetal from "./PostItemDetal";
 
 function Posts() {
   const { isFetching, error, data } = useAllposts();
-  console.log(`error`, error);
-  console.log(`posts`, data);
-  console.log(`isFetching`, isFetching);
+  const [postSlug, setPostSlug] = useState(null);
   const posts = data.posts ? data.posts : [];
   const featuredPost = posts.shift();
+  const handlePostDetail = (slug) => {
+    setPostSlug(slug);
+  };
   return (
     <>
       {isFetching && <h1>fetching data...</h1>}
@@ -23,10 +25,20 @@ function Posts() {
             <FeaturedPost featuredPost={featuredPost} />
 
             {posts.map((post, i) => (
-              <PostItem post={post} key={i} />
+              <PostItem
+                post={post}
+                key={i}
+                handlePostDetail={handlePostDetail}
+              />
             ))}
           </div>
         </>
+      )}
+      {postSlug && (
+        <PostItemDetal
+          postSlug={postSlug}
+          handleClose={() => setPostSlug(null)}
+        />
       )}
     </>
   );
