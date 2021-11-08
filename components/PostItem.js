@@ -1,34 +1,28 @@
 import React from "react";
 import Image from "next/image";
 
-function PostItem() {
+function PostItem({ post }) {
   return (
-    <div class="border hover:shadow-xl rounded overflow-hidden">
-      <div class="h-[250px] md:h-[150px] bg-transparent overflow-hidden relative">
+    <div className="border hover:shadow-xl rounded overflow-hidden">
+      <div className="h-[250px] md:h-[150px] bg-transparent overflow-hidden relative">
         {/* <img
           src="https://millardayo.com/wp-content/uploads/2021/11/32-660x400.jpg"
-          class="w-full "
+          className="w-full "
           alt=""
         /> */}
-        <Image
-          layout="fill"
-          src="https://millardayo.com/wp-content/uploads/2021/11/32-660x400.jpg"
-          class=" "
-          alt="image"
-        />
+        <Image layout="fill" src={post.thumbnail} className=" " alt="image" />
       </div>
-      <div class="h-1/2 p-4">
-        <p class="font-light">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae
-          harum obcaecati, nisi ...
+      <div className="h-1/2 p-4">
+        <p className="font-light">
+          {post.post_title}
           <a
             href="#"
-            class="text-primary-600 hover:text-primary-900 transition-all"
+            className="text-primary-600 hover:text-primary-900 transition-all"
           >
             Read More
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 inline text-primary-600 animate-pulse"
+              className="h-5 w-5 inline text-primary-600 animate-pulse"
               viewBox="0 0 20 20"
               fill="currentColor"
             >
@@ -45,15 +39,15 @@ function PostItem() {
             </svg>
           </a>
         </p>
-        {/* <div class="mt-5 flex items-center pr-2">
+        {/* <div className="mt-5 flex items-center pr-2">
           <img
             src="/assets/bg.svg"
-            class="h-12 w-12 rounded-full shadow-md"
+            className="h-12 w-12 rounded-full shadow-md"
             alt=""
           />
-          <div class="ml-2">
-            <p class="text-sm font-light">Jane Doe</p>
-            <small class="text-primary-800 text-xs font-thin">
+          <div className="ml-2">
+            <p className="text-sm font-light">Jane Doe</p>
+            <small className="text-primary-800 text-xs font-thin">
               5th June, 2021
             </small>
           </div>

@@ -1,22 +1,31 @@
 import React from "react";
+import { useAllposts } from "../hooks/useAllPosts";
 import FeaturedPost from "./FeaturedPost";
 import PostItem from "./PostItem";
 
 function Posts() {
+  const { isFetching, error, data } = useAllposts();
+  console.log(`error`, error);
+  console.log(`posts`, data);
+  console.log(`isFetching`, isFetching);
   return (
     <>
-      <h1 class=" text-prisec-600 font-thin text-3xl text-center my-4">
-        Latest Posts
-      </h1>
-      <div class="grid gap-16 grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
-        <FeaturedPost />
+      {isFetching && <h1>fetching data...</h1>}
+      {!isFetching && error && <h1>Failed to load data</h1>}
+      {!isFetching && (
+        <>
+          <h1 className=" text-prisec-600 font-thin text-3xl text-center my-4">
+            Latest Posts
+          </h1>
+          <div className="grid gap-16 grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
+            <FeaturedPost />
 
-        {Array(10)
-          .fill(2)
-          .map((_, i) => (
-            <PostItem key={i} />
-          ))}
-      </div>
+            {data.posts?.map((post, i) => (
+              <PostItem post={post} key={i} />
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }
