@@ -15,7 +15,7 @@ function PostItemDetal({ postSlug, handleClose }) {
           <img
             src={data.post?.post_feature_image}
             alt={data.post?.post_header}
-            className=" w-full mb-5 md:w-3/4 md:mt-5 md:shadow md:rounded-md mx-auto"
+            className=" w-full mb-5 md:w-3/4 md:mt-5 md:drop-shadow-lg md:rounded-md mx-auto"
           />
 
           <h4 className="mb-5 text-lg font-semibold ">
