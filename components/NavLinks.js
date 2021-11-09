@@ -3,7 +3,7 @@ import NavLinkItem from "./NavLinkItem";
 
 function NavLinks() {
   return (
-    <ul class="flex justify-center items-center">
+    <ul className="flex justify-center items-center">
       <NavLinkItem href="/" title="home" />
       <NavLinkItem href="/about" title="about" />
       <NavLinkItem href="/contact" title="contact us" />

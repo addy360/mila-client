@@ -2,9 +2,9 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer class="bg-yellow-900 py-9 mt-5">
+    <footer className="bg-yellow-900 py-9 mt-5">
       <div>
-        <p class="text-center">Copyright @ 2021. All rights are reserved</p>
+        <p className="text-center">Copyright @ 2021. All rights are reserved</p>
       </div>
     </footer>
   );

@@ -2,9 +2,9 @@ import React from "react";
 
 function FeaturedPost({ featuredPost, handlePostDetail }) {
   return (
-    <div class="lg:col-span-4 md:col-span-2 md:h-72">
+    <div className="lg:col-span-4 md:col-span-2 md:h-72">
       <div
-        class="
+        className="
                 flex
                 flex-col
                 md:flex-row
@@ -16,16 +16,16 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
                 hover:shadow-xl
       "
       >
-        <div class="bg-green-900 overflow-hidden flex-1">
+        <div className="bg-green-900 overflow-hidden flex-1">
           <img
             src={featuredPost?.thumbnail}
-            class="bg-cover h-auto w-full"
+            className="bg-cover h-auto w-full"
             alt=""
           />
         </div>
-        <div class="flex-1 p-6">
+        <div className="flex-1 p-6">
           <span
-            class="
+            className="
                     bg-secondary-100
                     text-secondary-800
                     px-6
@@ -38,7 +38,7 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
           </span>
           <p
             onClick={() => handlePostDetail(featuredPost.post_link)}
-            class="
+            className="
                         my-3
                         block
                         text-primary-800
@@ -50,16 +50,16 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
             {featuredPost?.post_title}
           </p>
 
-          <p class="font-light">{featuredPost?.post_title}</p>
+          <p className="font-light">{featuredPost?.post_title}</p>
           <div
-            class="mt-5
+            className="mt-5
                     flex
                     items-center
                     w-1/3
                     pr-2"
           >
-            <div class="ml-2">
-              <small class="text-yellow-800 text-xs font-thin">
+            <div className="ml-2">
+              <small className="text-yellow-800 text-xs font-thin">
                 5th June, 2021
               </small>
             </div>

@@ -1,20 +1,17 @@
-import React from "react";
 import Head from "next/head";
-import { usePost } from "../hooks/useAllPosts";
+import React from "react";
 
-function details() {
-  const res = usePost();
-  console.log(`res`, res);
+function about() {
   return (
     <>
       <Head>
-        <title>Detailed page</title>
+        <title>About page</title>
       </Head>
       <div>
-        <h4>Detailed page</h4>
+        <h4>About page</h4>
       </div>
     </>
   );
 }
 
-export default details;
+export default about;
