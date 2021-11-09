@@ -1,8 +1,8 @@
-import React from "react";
 import Image from "next/image";
-import Link from "next/link";
+import React from "react";
 
 function PostItem({ post, handlePostDetail }) {
+  if (!post) return <h4>Loading...</h4>;
   return (
     <div className="border hover:shadow-xl rounded overflow-hidden">
       <div className="h-[250px] md:h-[150px] bg-transparent overflow-hidden relative">
@@ -11,13 +11,13 @@ function PostItem({ post, handlePostDetail }) {
           className="w-full "
           alt=""
         /> */}
-        <Image layout="fill" src={post.thumbnail} className=" " alt="image" />
+        <Image layout="fill" src={post?.thumbnail} className=" " alt="image" />
       </div>
       <div className="h-1/2 p-4">
         <p className="font-light">
-          {post.post_title}
+          {post?.post_title}
           <button
-            onClick={() => handlePostDetail(post.post_link)}
+            onClick={() => handlePostDetail(post?.post_link)}
             className="ml-3 text-primary-800 hover:text-primary-900 transition-all"
           >
             Read More

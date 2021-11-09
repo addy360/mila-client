@@ -1,13 +1,25 @@
 import Head from "next/head";
+import { useState } from "react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Posts from "../components/Posts";
 
 export default function Home() {
+  const [fetchNext, setfetchnext] = useState(false);
+
+  const handleScroll = (e) => {
+    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
+    if (scrollHeight === scrollTop + clientHeight) {
+      setfetchnext(true);
+    }
+  };
   return (
-    <>
+    <div className="h-screen overflow-y-hidden flex flex-col">
       <Nav />
-      <div className="container mx-auto">
+      <div
+        className="container mx-auto flex-1 overflow-y-auto "
+        onScroll={handleScroll}
+      >
         <div
           className="
                 flex flex-col
@@ -30,9 +42,9 @@ export default function Home() {
         </div>
 
         {/* posts */}
-        <Posts />
+        <Posts fetchNext={fetchNext} setFetchNext={setfetchnext} />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
