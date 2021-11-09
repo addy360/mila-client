@@ -1,17 +1,24 @@
 import React from "react";
 import { usePost } from "../hooks/useAllPosts";
+import { useFramer } from "../hooks/useframer";
 import Backdrop from "./Backdrop";
 import ImageGallery from "./ImageGallery";
 import Video from "./Video";
 
 function PostItemDetal({ postSlug, handleClose }) {
+  const { motion, dropInVariants } = useFramer();
   const { data, isFetching, error } = usePost(postSlug);
 
   return (
     <Backdrop handleClose={handleClose}>
       {isFetching && <h1>Fetching data...</h1>}
       {!isFetching && data && (
-        <div className="absolute top-10 bottom-10 left-10 right-10 bg-white shadow-lg rounded-md p-4 overflow-x-auto">
+        <motion.div
+          variants={dropInVariants}
+          initial="hidden"
+          animate="visible"
+          className="absolute top-10 bottom-10 left-10 right-10 bg-white shadow-lg rounded-md p-4 overflow-x-auto"
+        >
           <img
             src={data.post?.post_feature_image}
             alt={data.post?.post_header}
@@ -29,7 +36,7 @@ function PostItemDetal({ postSlug, handleClose }) {
               <Video src={src} />
             </div>
           ))}
-        </div>
+        </motion.div>
       )}
     </Backdrop>
   );

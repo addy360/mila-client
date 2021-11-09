@@ -1,8 +1,18 @@
 import React from "react";
+import { motion } from "framer-motion";
 
+const variants = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+};
 function FeaturedPost({ featuredPost, handlePostDetail }) {
   return (
-    <div className="lg:col-span-4 md:col-span-2 md:h-72">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      className="lg:col-span-4 md:col-span-2 md:h-72"
+    >
       <div
         className="
                 flex
@@ -66,7 +76,7 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

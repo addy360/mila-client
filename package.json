@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "apisauce": "^2.1.2",
+    "framer-motion": "^5.2.1",
     "next": "latest",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

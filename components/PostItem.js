@@ -1,10 +1,17 @@
 import Image from "next/image";
 import React from "react";
+import { useFramer } from "../hooks/useframer";
 
 function PostItem({ post, handlePostDetail }) {
+  const { motion, fadeVariants } = useFramer();
   if (!post) return <h4>Loading...</h4>;
   return (
-    <div className="border hover:shadow-xl rounded overflow-hidden">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={fadeVariants}
+      className="border hover:shadow-xl rounded overflow-hidden"
+    >
       <div className="h-[250px] md:h-[150px] bg-transparent overflow-hidden relative">
         {/* <img
           src={post.thumbnail}
@@ -54,7 +61,7 @@ function PostItem({ post, handlePostDetail }) {
           </div>
         </div> */}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
