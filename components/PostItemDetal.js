@@ -1,6 +1,7 @@
 import React from "react";
 import { usePost } from "../hooks/useAllPosts";
 import Backdrop from "./Backdrop";
+import ImageGallery from "./ImageGallery";
 import Video from "./Video";
 
 function PostItemDetal({ postSlug, handleClose }) {
@@ -21,11 +22,8 @@ function PostItemDetal({ postSlug, handleClose }) {
             {data.post?.post_header}
           </h4>
           <p className="mb-3">{data.post?.post_detail}</p>
-          <div className="flex flex-wrap gap-4 mb-4">
-            {data.post?.post_images.map((src, i) => (
-              <img src={src} className="h-32 w-auto" />
-            ))}
-          </div>
+
+          <ImageGallery images={data.post?.post_images} />
           {data.post?.videos.map((src, i) => (
             <div key={i} className="mb-4">
               <Video src={src} />

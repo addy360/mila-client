@@ -1,4 +1,5 @@
 import "tailwindcss/tailwind.css";
+import "react-image-lightbox/style.css";
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
