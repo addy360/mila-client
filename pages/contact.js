@@ -12,8 +12,11 @@ function contact() {
       <div className="h-screen flex flex-col  ">
         <Nav />
         <div className="flex-1 grid place-content-center">
-          <div className="md:w-[500px] w-[400px] border mx-auto shadow-lg py-6 md:px-10 rounded ">
+          <div className="md:w-[500px] w-[400px] border mx-auto shadow-lg py-6 md:px-10 px-5 rounded ">
             <h4 className="text-center text-2xl my-5">Let's talk 🤗!</h4>
+            <p className="text-center font-thin my-4">
+              🧐Do not contact me yet🧐
+            </p>
             <FormField
               title="Your name Sir🧛/Madam🧕"
               name="fullname"
