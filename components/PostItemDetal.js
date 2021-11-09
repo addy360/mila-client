@@ -5,7 +5,6 @@ import Video from "./Video";
 
 function PostItemDetal({ postSlug, handleClose }) {
   const { data, isFetching, error } = usePost(postSlug);
-  console.log(`data`, data);
 
   return (
     <Backdrop handleClose={handleClose}>
@@ -18,7 +17,9 @@ function PostItemDetal({ postSlug, handleClose }) {
             className=" w-full mb-5 md:w-3/4 md:mt-5 md:shadow md:rounded-md mx-auto"
           />
 
-          <h4 className="mb-5">{data.post?.post_header}</h4>
+          <h4 className="mb-5 text-lg font-semibold ">
+            {data.post?.post_header}
+          </h4>
           <p className="mb-3">{data.post?.post_detail}</p>
           <div className="flex flex-wrap gap-4 mb-4">
             {data.post?.post_images.map((src, i) => (

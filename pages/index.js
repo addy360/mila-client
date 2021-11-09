@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <div class="container mx-auto">
+      <div className="container mx-auto">
         <div
-          class="
+          className="
                 flex flex-col
                 align-middle
                 items-center
@@ -17,7 +17,7 @@ export default function Home() {
                 py-4
               "
         >
-          <h2 class="text-gray-800 text-5xl font-thin mb-4">Categories</h2>
+          <h2 className="text-gray-800 text-5xl font-thin mb-4">Categories</h2>
           <select
             name=""
             id=""

@@ -1,6 +1,6 @@
 import React from "react";
 
-function FeaturedPost({ featuredPost }) {
+function FeaturedPost({ featuredPost, handlePostDetail }) {
   return (
     <div class="lg:col-span-4 md:col-span-2 md:h-72">
       <div
@@ -36,18 +36,19 @@ function FeaturedPost({ featuredPost }) {
           >
             featured
           </span>
-          <a
-            href="#"
+          <p
+            onClick={() => handlePostDetail(featuredPost.post_link)}
             class="
                         my-3
                         block
                         text-primary-800
                         hover:text-primary-900
                         transition-all
+                        cursor-pointer
                     "
           >
             {featuredPost?.post_title}
-          </a>
+          </p>
 
           <p class="font-light">{featuredPost?.post_title}</p>
           <div

@@ -22,7 +22,10 @@ function Posts() {
             Latest Posts
           </h1>
           <div className="grid gap-16 grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
-            <FeaturedPost featuredPost={featuredPost} />
+            <FeaturedPost
+              featuredPost={featuredPost}
+              handlePostDetail={handlePostDetail}
+            />
 
             {posts.map((post, i) => (
               <PostItem
