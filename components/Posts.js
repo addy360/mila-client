@@ -55,12 +55,26 @@ function Posts({ fetchNext, setFetchNext }) {
         </div>
       )}
       {paginatedPosts.isFetching && (
-        <span className=" mb-4 py-2 px-4 border rounded font-light text-center inline-block mx-auto ">
+        <p className=" mb-4 py-2 px-4 border rounded text-primary-800 font-light text-center  mx-auto ">
           fetching data...
-        </span>
+        </p>
+      )}
+
+      {paginatedPosts.posts.length > 0 && !paginatedPosts.isFetching && (
+        <div className="grid place-content-center">
+          <motion.button
+            onClick={() => handleFetchNext()}
+            initial="hidden"
+            animate="visible"
+            variants={fadeVariants}
+            className="py-1 px-2 text-sm border font-thin text-primary-700 rounded-md shadow-md"
+          >
+            Load more
+          </motion.button>
+        </div>
       )}
       {!paginatedPosts.isFetching && paginatedPosts.error && (
-        <h1>Failed to load data</h1>
+        <h1 className="text-center text-prisec-900">Failed to load data</h1>
       )}
 
       {postSlug && (
