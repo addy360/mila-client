@@ -12,3 +12,7 @@ export const fetchAllPosts = (url = "/") => {
 export const fetchDetailedPost = (endpoint) => {
   return apiClient.get(endpoint);
 };
+
+export const postContact = (fullname, message, email) => {
+  return apiClient.post("/admin/contact", { fullname, message, email });
+};

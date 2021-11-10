@@ -1,17 +1,28 @@
 const { useEffect, useState } = require("react");
-const { fetchAllPosts, fetchDetailedPost } = require("../apiServices");
+const {
+  fetchAllPosts,
+  fetchDetailedPost,
+  postContact,
+} = require("../apiServices");
 
-const useApi = (handler) => {
+const useApi = (handler, init = true) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [isFetching, setIsfetching] = useState(false);
   useEffect(() => {
-    queryData();
+    if (init) {
+      queryData();
+    }
   }, []);
 
-  const queryData = async (url = null) => {
+  const queryData = async (url = null, data = null) => {
     setIsfetching(true);
-    const res = url ? await handler(url) : await handler();
+    let res;
+    if (data) {
+      res = await handler(data);
+    } else {
+      res = url ? await handler(url) : await handler();
+    }
     setIsfetching(false);
     if (!res.ok) {
       setError(res.originalError);
@@ -27,6 +38,7 @@ const useApi = (handler) => {
     isFetching,
     queryData,
     setData,
+    setError,
   };
 };
 
@@ -58,4 +70,11 @@ export const usePaginatedPosts = () => {
 
 export const usePost = (slug) => {
   return useApi(() => fetchDetailedPost(slug));
+};
+
+export const useContact = () => {
+  return useApi(
+    ({ fullname, message, email }) => postContact(fullname, message, email),
+    false
+  );
 };
