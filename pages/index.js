@@ -20,7 +20,7 @@ export default function Home() {
         className="container mx-auto flex-1 overflow-y-auto "
         onScroll={handleScroll}
       >
-        <div
+        {/* <div
           className="
                 flex flex-col
                 align-middle
@@ -39,7 +39,7 @@ export default function Home() {
             <option value="">Sports</option>
             <option value="">Entertainment</option>
           </select>
-        </div>
+        </div> */}
 
         {/* posts */}
         <Posts fetchNext={fetchNext} setFetchNext={setfetchnext} />

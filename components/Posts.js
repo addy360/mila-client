@@ -44,7 +44,7 @@ function Posts({ fetchNext, setFetchNext }) {
               handlePostDetail={handlePostDetail}
             />
 
-            {paginatedPosts.posts.map((post, i) => (
+            {paginatedPosts.posts.slice(1).map((post, i) => (
               <PostItem
                 post={post}
                 key={i}

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import TimeToday from "./TimeToday";
 
 const variants = {
   visible: { opacity: 1 },
@@ -24,13 +25,15 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
                 rounded-md
                 overflow-hidden
                 hover:shadow-xl
+                items-center
+                justify-center
       "
       >
         <div className="bg-green-900 overflow-hidden flex-1">
           <img
             src={featuredPost?.thumbnail}
             className="bg-cover h-auto w-full"
-            alt=""
+            alt={featuredPost?.post_title}
           />
         </div>
         <div className="flex-1 p-6">
@@ -65,14 +68,10 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
             className="mt-5
                     flex
                     items-center
-                    w-1/3
-                    pr-2"
+                    w-full
+                    pr-2 drop-shadow-md "
           >
-            <div className="ml-2">
-              <small className="text-yellow-800 text-xs font-thin">
-                5th June, 2021
-              </small>
-            </div>
+            <TimeToday />
           </div>
         </div>
       </div>
