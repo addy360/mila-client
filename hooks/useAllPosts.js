@@ -73,8 +73,5 @@ export const usePost = (slug) => {
 };
 
 export const useContact = () => {
-  return useApi(
-    ({ fullname, message, email }) => postContact(fullname, message, email),
-    false
-  );
+  return useApi((data) => postContact(data), false);
 };
