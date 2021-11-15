@@ -10,15 +10,22 @@ function PostItem({ post, handlePostDetail }) {
       initial="hidden"
       animate="visible"
       variants={fadeVariants}
-      className="border hover:shadow-xl rounded overflow-hidden"
+      className="border md:hover:shadow-xl m-4 -mb-10 shadow-md md:shadow-none drop-shadow-md md:drop-shadow-none md:-m-4 rounded overflow-hidden"
     >
-      <div className="h-[250px] md:h-[150px] bg-transparent overflow-hidden relative">
+      <div className=" bg-transparent overflow-hidden relative">
         {/* <img
           src={post.thumbnail}
           className="w-full "
           alt=""
         /> */}
-        <Image layout="fill" src={post?.thumbnail} className=" " alt="image" />
+        <Image
+          layout="responsive"
+          width={360}
+          height={220}
+          src={post?.thumbnail}
+          className=" w-auto h-auto"
+          alt="image"
+        />
         <span className="absolute top-1 right-1 px-4 py-1 rounded drop-shadow-md text-sm bg-secondary-100 bg-opacity-80 text-primary-900 ">
           {post.category}
         </span>

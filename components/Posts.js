@@ -29,7 +29,7 @@ function Posts({ fetchNext, setFetchNext }) {
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
       {paginatedPosts.posts.length > 0 && (
-        <div className="mb-10">
+        <div className="mb-10 p-4">
           <motion.h1
             initial="hidden"
             animate="visible"
