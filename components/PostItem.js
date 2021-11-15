@@ -19,6 +19,9 @@ function PostItem({ post, handlePostDetail }) {
           alt=""
         /> */}
         <Image layout="fill" src={post?.thumbnail} className=" " alt="image" />
+        <span className="absolute top-1 right-1 px-4 py-1 rounded drop-shadow-md text-sm bg-secondary-100 bg-opacity-80 text-primary-900 ">
+          {post.category}
+        </span>
       </div>
       <div className="h-1/2 p-4">
         <p className="font-light">

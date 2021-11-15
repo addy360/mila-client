@@ -43,11 +43,12 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
                     text-secondary-800
                     px-6
                     py-1
-                    rounded-3xl
+                    rounded-md
                     border-secondary-800
+                    drop-shadow-md
                 "
           >
-            featured
+            {featuredPost.category}
           </span>
           <p
             onClick={() => handlePostDetail(featuredPost.post_link)}

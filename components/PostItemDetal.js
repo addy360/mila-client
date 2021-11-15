@@ -11,13 +11,13 @@ function PostItemDetal({ postSlug, handleClose }) {
 
   return (
     <Backdrop handleClose={handleClose}>
-      {isFetching && <h1>Fetching data...</h1>}
+      {isFetching && <h1 className="animate-pulse">Fetching data...</h1>}
       {!isFetching && data && (
         <motion.div
           variants={dropInVariants}
           initial="hidden"
           animate="visible"
-          className="absolute top-10 bottom-10 left-10 right-10 bg-white shadow-lg rounded-md p-4 overflow-x-auto"
+          className="absolute top-10 bottom-10 left-10 md:left-20 right-10 md:right-20 bg-white drop-shadow-lg shadow-lg rounded-md p-4 overflow-x-auto"
         >
           <img
             src={data.post?.post_feature_image}
