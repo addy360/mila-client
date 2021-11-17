@@ -120,10 +120,7 @@ function contact() {
         </div>
       </div>
       {error && (
-        <ErrorDisplay
-          handleClose={() => setError(null)}
-          message={JSON.stringify(error.response.data.data.errors, null, 4)}
-        />
+        <ErrorDisplay handleClose={() => setError(null)} error={error} />
       )}
     </>
   );

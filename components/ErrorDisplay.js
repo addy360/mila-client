@@ -2,8 +2,14 @@ import React from "react";
 import { useFramer } from "../hooks/useframer";
 import Backdrop from "./Backdrop";
 
-function ErrorDisplay({ handleClose, message }) {
+function ErrorDisplay({ handleClose, error }) {
   const { dropInVariants, motion } = useFramer();
+  let message;
+  try {
+    message = JSON.stringify(error.response.data.data.errors, null, 4);
+  } catch (error) {
+    message = "Something went wrong!";
+  }
   return (
     <Backdrop handleClose={handleClose}>
       <motion.div

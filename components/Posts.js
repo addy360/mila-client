@@ -55,9 +55,11 @@ function Posts({ fetchNext, setFetchNext }) {
         </div>
       )}
       {paginatedPosts.isFetching && (
-        <p className=" mb-4 py-2 px-4 border rounded text-primary-800 font-light text-center  mx-auto ">
-          fetching data...
-        </p>
+        <div className="grid place-content-center my-3">
+          <p className=" mb-4 py-2 px-4 border rounded filter drop-shadow-md shadow animate-pulse text-primary-800 font-light text-center  mx-auto inline-block">
+            fetching data...
+          </p>
+        </div>
       )}
 
       {paginatedPosts.posts.length > 0 && !paginatedPosts.isFetching && (
