@@ -17,7 +17,7 @@ function PostItem({ post, handlePostDetail }) {
           width={360}
           loading="lazy"
           height={220}
-          className=" w-auto h-auto"
+          className=" w-full h-auto"
           alt={post?.post_title}
           src={post.thumbnail}
         />
