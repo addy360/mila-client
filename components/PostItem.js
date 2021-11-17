@@ -13,14 +13,16 @@ function PostItem({ post, handlePostDetail }) {
       className="border md:hover:shadow-xl m-4 -mb-10 shadow-md md:shadow-none drop-shadow-md md:drop-shadow-none md:-m-4 rounded overflow-hidden"
     >
       <div className=" bg-transparent overflow-hidden relative">
-        <img
-          width={360}
-          loading="lazy"
-          height={220}
-          className=" w-full h-auto"
-          alt={post?.post_title}
-          src={post.thumbnail}
-        />
+        <div className="h-[220px]">
+          <img
+            width={360}
+            loading="lazy"
+            height={220}
+            className=" w-full h-auto object-cover"
+            alt={post?.post_title}
+            src={post.thumbnail}
+          />
+        </div>
         {/* <Image
           layout="responsive"
           width={360}
