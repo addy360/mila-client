@@ -13,19 +13,22 @@ function PostItem({ post, handlePostDetail }) {
       className="border md:hover:shadow-xl m-4 -mb-10 shadow-md md:shadow-none drop-shadow-md md:drop-shadow-none md:-m-4 rounded overflow-hidden"
     >
       <div className=" bg-transparent overflow-hidden relative">
-        {/* <img
+        <img
+          width={360}
+          loading="lazy"
+          height={220}
+          className=" w-auto h-auto"
+          alt={post?.post_title}
           src={post.thumbnail}
-          className="w-full "
-          alt=""
-        /> */}
-        <Image
+        />
+        {/* <Image
           layout="responsive"
           width={360}
           height={220}
           src={post?.thumbnail}
           className=" w-auto h-auto"
           alt="image"
-        />
+        /> */}
         <span className="absolute top-1 right-1 px-4 py-1 rounded drop-shadow-md text-sm bg-secondary-100 bg-opacity-80 text-primary-900 ">
           {post.category}
         </span>
