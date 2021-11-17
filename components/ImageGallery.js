@@ -14,6 +14,8 @@ function ImageGallery({ images }) {
       <div className="flex flex-wrap gap-4 mb-4">
         {images.map((src, i) => (
           <img
+            height={128}
+            loading="lazy"
             src={src}
             className="h-32 w-auto cursor-pointer opacity-80 hover:opacity-100 transition-all shadow-md rounded-md"
             key={i}
