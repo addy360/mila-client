@@ -1,7 +1,17 @@
 import React from "react";
 
 function Video({ src }) {
-  return <iframe src={src} frameBorder="0"></iframe>;
+  return (
+    <div className="w-full h-[0px] pb-[56.75%] relative">
+      <iframe
+        loading="lazy"
+        src={src}
+        frameBorder="0"
+        className="absolute w-full h-full"
+      ></iframe>
+      ;
+    </div>
+  );
 }
 
 export default Video;
