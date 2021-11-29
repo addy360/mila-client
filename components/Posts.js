@@ -1,19 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { usePaginatedPosts } from "../hooks/useAllPosts";
 import { useFramer } from "../hooks/useframer";
 import FeaturedPost from "./FeaturedPost";
 import PostItem from "./PostItem";
 import PostItemDetal from "./PostItemDetal";
+const { motion, dropInVariants, fadeVariants } = useFramer();
 
 function Posts({ fetchNext, setFetchNext }) {
-  const { motion, dropInVariants, fadeVariants } = useFramer();
   const paginatedPosts = usePaginatedPosts();
   const [postSlug, setPostSlug] = useState(null);
 
+  const handlePostDetailClose = useCallback(() => setPostSlug(null), []);
+
   const featuredPost = paginatedPosts.posts[0];
-  const handlePostDetail = (slug) => {
+  const handlePostDetail = useCallback((slug) => {
     setPostSlug(slug);
-  };
+  });
 
   const handleFetchNext = () => {
     paginatedPosts.queryData(paginatedPosts.nextUrl);
@@ -21,7 +23,7 @@ function Posts({ fetchNext, setFetchNext }) {
   };
 
   useEffect(() => {
-    if (fetchNext) {
+    if (fetchNext && !paginatedPosts.isFetching) {
       handleFetchNext();
     }
   }, [fetchNext]);
@@ -82,11 +84,11 @@ function Posts({ fetchNext, setFetchNext }) {
       {postSlug && (
         <PostItemDetal
           postSlug={postSlug}
-          handleClose={() => setPostSlug(null)}
+          handleClose={handlePostDetailClose}
         />
       )}
     </motion.div>
   );
 }
 
-export default Posts;
+export default React.memo(Posts);

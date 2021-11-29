@@ -1,8 +1,8 @@
 import React from "react";
 import { useFramer } from "../hooks/useframer";
+const { motion, fadeVariants } = useFramer();
 
 function Backdrop({ children, handleClose }) {
-  const { motion, fadeVariants } = useFramer();
   const handleClick = (e) => {
     e.target.id === "backdrop" ? handleClose() : null;
   };

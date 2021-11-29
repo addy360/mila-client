@@ -4,9 +4,9 @@ import { useFramer } from "../hooks/useframer";
 import Backdrop from "./Backdrop";
 import ImageGallery from "./ImageGallery";
 import Video from "./Video";
+const { motion, dropInVariants } = useFramer();
 
 function PostItemDetal({ postSlug, handleClose }) {
-  const { motion, dropInVariants } = useFramer();
   const { data, isFetching, error } = usePost(postSlug);
 
   return (
@@ -42,4 +42,4 @@ function PostItemDetal({ postSlug, handleClose }) {
   );
 }
 
-export default PostItemDetal;
+export default React.memo(PostItemDetal);

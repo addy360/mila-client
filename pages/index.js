@@ -1,11 +1,13 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Posts from "../components/Posts";
 
 export default function Home() {
   const [fetchNext, setfetchnext] = useState(false);
+
+  const setfetchNextclbk = useCallback(() => setfetchnext(true));
 
   const handleScroll = (e) => {
     const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
@@ -42,7 +44,7 @@ export default function Home() {
         </div> */}
 
         {/* posts */}
-        <Posts fetchNext={fetchNext} setFetchNext={setfetchnext} />
+        <Posts fetchNext={fetchNext} setFetchNext={setfetchNextclbk} />
       </div>
       <Footer />
     </div>

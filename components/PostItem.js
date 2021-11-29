@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import { useFramer } from "../hooks/useframer";
+const { motion, fadeVariants } = useFramer();
 
 function PostItem({ post, handlePostDetail }) {
-  const { motion, fadeVariants } = useFramer();
   if (!post) return <h4>Loading...</h4>;
   return (
     <motion.div
@@ -80,4 +80,4 @@ function PostItem({ post, handlePostDetail }) {
   );
 }
 
-export default PostItem;
+export default React.memo(PostItem);

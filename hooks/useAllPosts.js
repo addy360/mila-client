@@ -1,4 +1,4 @@
-const { useEffect, useState } = require("react");
+const { useEffect, useState, useMemo, useCallback } = require("react");
 const {
   fetchAllPosts,
   fetchDetailedPost,
@@ -69,7 +69,8 @@ export const usePaginatedPosts = () => {
 };
 
 export const usePost = (slug) => {
-  return useApi(() => fetchDetailedPost(slug));
+  const clb = useCallback(() => fetchDetailedPost(slug), [slug]);
+  return useApi(clb);
 };
 
 export const useContact = () => {
