@@ -8,9 +8,19 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta
           name="description"
-          content="Mila client is a web client clean minimalistic 🏄 user interface for Millard Ayo
+          content="Mila client (Ablo) is a web client clean minimalistic 🏄 user interface for Millard Ayo
             blog. It is built from the love 💓 of the blog of course which is
             keeping lazy people 🙊🙊🙊 up to date with the current news👊."
+        />
+        <meta
+          property="og:description"
+          content="Mila client (Ablo) is a web client clean minimalistic 🏄 user interface for Millard Ayo
+            blog. It is built from the love 💓 of the blog of course which is
+            keeping lazy people 🙊🙊🙊 up to date with the current news👊."
+        />
+        <meta
+          property="og:image"
+          content="https://avatars.githubusercontent.com/u/51880591?v=4?s=400"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
