@@ -22,6 +22,7 @@ function MyApp({ Component, pageProps }) {
           href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap"
           rel="stylesheet"
         />
+        <title>Ablo Blog</title>
       </Head>
       <div className="font-oswald">
         <Component {...pageProps} />
