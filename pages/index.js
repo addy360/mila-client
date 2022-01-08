@@ -1,15 +1,13 @@
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Posts from "../components/Posts";
-import PostProvider from "../context/PostContext/PostProvider";
 
 export default function Home() {
   return (
     <div className="h-screen overflow-y-hidden flex flex-col">
-      <PostProvider>
-        <Nav />
-        <div className="container mx-auto flex-1 overflow-y-auto ">
-          {/* <div
+      <Nav />
+      <div className="container mx-auto flex-1 overflow-y-auto ">
+        {/* <div
           className="
                 flex flex-col
                 align-middle
@@ -30,9 +28,8 @@ export default function Home() {
           </select>
         </div> */}
 
-          <Posts />
-        </div>
-      </PostProvider>
+        <Posts />
+      </div>
       <Footer />
     </div>
   );

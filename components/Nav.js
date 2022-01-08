@@ -1,8 +1,10 @@
 import React from "react";
 import NavLinks from "./NavLinks";
 import Link from "next/link";
+import { usePostContext } from "../hooks/useContext";
 
 function Nav() {
+  const { posts } = usePostContext();
   return (
     <nav
       className=" bg-secondary-800 py-3 px-12 flex flex-col md:flex-row items-center drop-shadow sticky top-0 z-50 justify-between shadow-md"
@@ -19,6 +21,11 @@ function Nav() {
             "
         >
           Ablo
+          <sup className="text-sm text-secondary-50">
+            <span className="animate-bounce inline-block text-secondary-800">
+              {posts.length}
+            </span>
+          </sup>
         </a>
       </Link>
       <NavLinks />

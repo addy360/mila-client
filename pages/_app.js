@@ -1,6 +1,7 @@
 import "tailwindcss/tailwind.css";
 import "react-image-lightbox/style.css";
 import Head from "next/head";
+import PostProvider from "../context/PostContext/PostProvider";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -64,7 +65,9 @@ function MyApp({ Component, pageProps }) {
         <title>Ablo Blog</title>
       </Head>
       <div className="font-oswald">
-        <Component {...pageProps} />
+        <PostProvider>
+          <Component {...pageProps} />
+        </PostProvider>
       </div>
     </>
   );
