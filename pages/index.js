@@ -1,8 +1,8 @@
-import Head from "next/head";
 import { useCallback, useState } from "react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Posts from "../components/Posts";
+import PostProvider from "../context/PostContext/PostProvider";
 
 export default function Home() {
   const [fetchNext, setfetchnext] = useState(false);
@@ -17,12 +17,13 @@ export default function Home() {
   };
   return (
     <div className="h-screen overflow-y-hidden flex flex-col">
-      <Nav />
-      <div
-        className="container mx-auto flex-1 overflow-y-auto "
-        onScroll={handleScroll}
-      >
-        {/* <div
+      <PostProvider>
+        <Nav />
+        <div
+          className="container mx-auto flex-1 overflow-y-auto "
+          onScroll={handleScroll}
+        >
+          {/* <div
           className="
                 flex flex-col
                 align-middle
@@ -43,9 +44,10 @@ export default function Home() {
           </select>
         </div> */}
 
-        {/* posts */}
-        <Posts fetchNext={fetchNext} setFetchNext={setfetchNextclbk} />
-      </div>
+          {/* posts */}
+          <Posts fetchNext={fetchNext} setFetchNext={setfetchNextclbk} />
+        </div>
+      </PostProvider>
       <Footer />
     </div>
   );

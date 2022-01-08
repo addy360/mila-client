@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { usePaginatedPosts } from "../hooks/useAllPosts";
+import { usePostContext } from "../hooks/useContext";
 import { useFramer } from "../hooks/useframer";
 import FeaturedPost from "./FeaturedPost";
 import PostItem from "./PostItem";
@@ -7,6 +8,10 @@ import PostItemDetal from "./PostItemDetal";
 const { motion, dropInVariants, fadeVariants } = useFramer();
 
 function Posts({ fetchNext, setFetchNext }) {
+  const { getPosts } = usePostContext();
+
+  useEffect(() => getPosts(), []);
+
   const paginatedPosts = usePaginatedPosts();
   const [postSlug, setPostSlug] = useState(null);
 
