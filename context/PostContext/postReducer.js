@@ -1,6 +1,7 @@
 export const POST_ACTIONS = {
   FETCH_POSTS: "FETCH_POSTS",
   FETCHING_POSTS: "FETCHING_POSTS",
+  FETCH_NEXT: "FETCH_NEXT",
   FETCH_POST: "FETCH_POST",
   FETCHING_POST: "FETCHING_POST",
   ERROR: "ERROR",
@@ -12,10 +13,8 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         posts_loading: true,
-        posts: [],
       };
     case POST_ACTIONS.FETCH_POSTS:
-      console.log(`action.payload`, action.payload);
       return {
         ...state,
         posts: action.payload.data.posts,
@@ -35,7 +34,7 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         post_loading: false,
-        post: action.payload,
+        post: action.payload.data.post,
       };
 
     case POST_ACTIONS.ERROR:
@@ -44,7 +43,15 @@ export const postReducer = (state, action) => {
         error: action.payload,
       };
 
+    case POST_ACTIONS.FETCH_NEXT:
+      return {
+        ...state,
+        posts_loading: false,
+        posts: [...state.posts, ...action.payload.data.posts],
+        next: action.payload.data.next,
+      };
+
     default:
-      break;
+      return state;
   }
 };

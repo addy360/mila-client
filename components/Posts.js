@@ -8,34 +8,35 @@ import PostItemDetal from "./PostItemDetal";
 const { motion, dropInVariants, fadeVariants } = useFramer();
 
 function Posts({ fetchNext, setFetchNext }) {
-  const { getPosts } = usePostContext();
+  const { getPosts, getNextPosts, next, posts, posts_fetching, error } =
+    usePostContext();
 
   useEffect(() => getPosts(), []);
 
-  const paginatedPosts = usePaginatedPosts();
+  // const paginatedPosts = usePaginatedPosts();
   const [postSlug, setPostSlug] = useState(null);
 
   const handlePostDetailClose = useCallback(() => setPostSlug(null), []);
 
-  const featuredPost = paginatedPosts.posts[0];
+  const featuredPost = posts[0];
   const handlePostDetail = useCallback((slug) => {
     setPostSlug(slug);
   });
 
-  const handleFetchNext = () => {
-    paginatedPosts.queryData(paginatedPosts.nextUrl);
-    setFetchNext(false);
-  };
+  // const handleFetchNext = () => {
+  //   paginatedPosts.queryData(paginatedPosts.nextUrl);
+  //   setFetchNext(false);
+  // };
 
-  useEffect(() => {
-    if (fetchNext && !paginatedPosts.isFetching) {
-      handleFetchNext();
-    }
-  }, [fetchNext]);
+  // useEffect(() => {
+  //   if (fetchNext && !paginatedPosts.isFetching) {
+  //     handleFetchNext();
+  //   }
+  // }, [fetchNext]);
 
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
-      {paginatedPosts.posts.length > 0 && (
+      {posts.length > 0 && (
         <div className="mb-10 p-4">
           <motion.h1
             initial="hidden"
@@ -51,7 +52,7 @@ function Posts({ fetchNext, setFetchNext }) {
               handlePostDetail={handlePostDetail}
             />
 
-            {paginatedPosts.posts.slice(1).map((post, i) => (
+            {posts.slice(1).map((post, i) => (
               <PostItem
                 post={post}
                 key={i}
@@ -61,7 +62,7 @@ function Posts({ fetchNext, setFetchNext }) {
           </div>
         </div>
       )}
-      {paginatedPosts.isFetching && (
+      {posts_fetching && (
         <div className="grid place-content-center my-3">
           <p className=" mb-4 py-2 px-4 border rounded filter drop-shadow-md shadow animate-pulse text-primary-800 font-light text-center  mx-auto inline-block">
             fetching data...
@@ -69,21 +70,23 @@ function Posts({ fetchNext, setFetchNext }) {
         </div>
       )}
 
-      {paginatedPosts.posts.length > 0 && !paginatedPosts.isFetching && (
+      {posts.length > 0 && (
         <div className="grid place-content-center">
           <motion.button
-            onClick={() => handleFetchNext()}
+            // onClick={() => handleFetchNext()}
+            disabled={posts_fetching}
+            onClick={() => getNextPosts(next)}
             initial="hidden"
             animate="visible"
             variants={fadeVariants}
             className="py-1 px-2 text-sm border font-thin text-primary-700 rounded-md shadow-md"
           >
-            Load more
+            {!posts_fetching ? "load more" : "loading more..."}
           </motion.button>
         </div>
       )}
-      {!paginatedPosts.isFetching && paginatedPosts.error && (
-        <h1 className="text-center text-prisec-900">Failed to load data</h1>
+      {!posts_fetching && error && (
+        <h1 className="text-center text-prisec-900">{error}</h1>
       )}
 
       {postSlug && (

@@ -13,7 +13,7 @@ const PostProvider = ({ children }) => {
   });
 
   const getPosts = async () => {
-    dispatch(POST_ACTIONS.FETCHING_POSTS);
+    dispatch({ type: POST_ACTIONS.FETCHING_POSTS });
     const res = await fetchAllPosts();
     if (!res.ok)
       return dispatch({
@@ -22,6 +22,18 @@ const PostProvider = ({ children }) => {
       });
 
     dispatch({ type: POST_ACTIONS.FETCH_POSTS, payload: res.data });
+  };
+
+  const getNextPosts = async (next) => {
+    dispatch({ type: POST_ACTIONS.FETCHING_POSTS });
+    const res = await fetchAllPosts(next);
+    if (!res.ok)
+      return dispatch({
+        type: POST_ACTIONS.ERROR,
+        payload: "Failed to fetch next posts",
+      });
+
+    dispatch({ type: POST_ACTIONS.FETCH_NEXT, payload: res.data });
   };
 
   const getPost = async (endpoint) => {
@@ -33,11 +45,11 @@ const PostProvider = ({ children }) => {
         payload: "Failed to fetch posts",
       });
 
-    dispatch({ type: POST_ACTIONS.FETCH_POST, post: action.payload });
+    dispatch({ type: POST_ACTIONS.FETCH_POST, payload: res.data });
   };
 
   return (
-    <PostContext.Provider value={{ ...state, getPosts, getPost }}>
+    <PostContext.Provider value={{ ...state, getPosts, getPost, getNextPosts }}>
       {children}
     </PostContext.Provider>
   );
