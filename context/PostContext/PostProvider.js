@@ -52,9 +52,25 @@ const PostProvider = ({ children }) => {
     dispatch({ type: POST_ACTIONS.FETCH_POST, payload: res.data });
   };
 
+  const setSlug = (slug) => {
+    dispatch({ type: POST_ACTIONS.SLUG, payload: slug });
+  };
+
+  const clearSlug = () => {
+    dispatch({ type: POST_ACTIONS.SLUG_CLEAR });
+  };
+
   return (
     <PostContext.Provider
-      value={{ ...state, getPosts, getPost, getNextPosts, clearError }}
+      value={{
+        ...state,
+        getPosts,
+        getPost,
+        getNextPosts,
+        clearError,
+        setSlug,
+        clearSlug,
+      }}
     >
       {children}
     </PostContext.Provider>

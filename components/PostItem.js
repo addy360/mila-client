@@ -1,9 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { useFramer } from "../hooks/useframer";
+import { usePostContext } from "../hooks/useContext";
 const { motion, fadeVariants } = useFramer();
 
-function PostItem({ post, handlePostDetail }) {
+function PostItem({ post }) {
+  const { setSlug } = usePostContext();
   if (!post) return <h4>Loading...</h4>;
   return (
     <motion.div
@@ -39,7 +41,7 @@ function PostItem({ post, handlePostDetail }) {
         <p className="font-light">
           {post?.post_title}
           <button
-            onClick={() => handlePostDetail(post?.post_link)}
+            onClick={() => setSlug(post?.post_link)}
             className="ml-3 text-primary-800 hover:text-primary-900 transition-all"
           >
             Read More

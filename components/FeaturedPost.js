@@ -1,12 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import TimeToday from "./TimeToday";
+import { usePostContext } from "../hooks/useContext";
 
 const variants = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
-function FeaturedPost({ featuredPost, handlePostDetail }) {
+function FeaturedPost({ featuredPost }) {
+  const { setSlug } = usePostContext();
   return (
     <motion.div
       initial="hidden"
@@ -51,7 +53,7 @@ function FeaturedPost({ featuredPost, handlePostDetail }) {
             {featuredPost.category}
           </span>
           <p
-            onClick={() => handlePostDetail(featuredPost.post_link)}
+            onClick={() => setSlug(featuredPost.post_link)}
             className="
                         my-3
                         block

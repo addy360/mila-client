@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import { usePostContext } from "../hooks/useContext";
 import { useFramer } from "../hooks/useframer";
 import FeaturedPost from "./FeaturedPost";
@@ -15,18 +15,15 @@ function Posts() {
     posts_fetching,
     error,
     clearError,
+    slug,
+    clearSlug,
   } = usePostContext();
 
   useEffect(() => getPosts(), []);
 
-  const [postSlug, setPostSlug] = useState(null);
-
-  const handlePostDetailClose = useCallback(() => setPostSlug(null), []);
+  const handlePostDetailClose = useCallback(() => clearSlug(), []);
 
   const featuredPost = posts[0];
-  const handlePostDetail = useCallback((slug) => {
-    setPostSlug(slug);
-  });
 
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
@@ -41,17 +38,10 @@ function Posts() {
             Latest Posts
           </motion.h1>
           <div className="grid gap-16 grid-cols-1 lg:grid-cols-4 md:grid-cols-2">
-            <FeaturedPost
-              featuredPost={featuredPost}
-              handlePostDetail={handlePostDetail}
-            />
+            <FeaturedPost featuredPost={featuredPost} />
 
             {posts.slice(1).map((post, i) => (
-              <PostItem
-                post={post}
-                key={i}
-                handlePostDetail={handlePostDetail}
-              />
+              <PostItem post={post} key={i} />
             ))}
           </div>
         </div>
@@ -67,7 +57,6 @@ function Posts() {
       {posts.length > 0 && (
         <div className="grid place-content-center">
           <motion.button
-            // onClick={() => handleFetchNext()}
             disabled={posts_fetching}
             onClick={() => getNextPosts(next)}
             initial="hidden"
@@ -85,11 +74,8 @@ function Posts() {
         </h1>
       )}
 
-      {postSlug && (
-        <PostItemDetal
-          postSlug={postSlug}
-          handleClose={handlePostDetailClose}
-        />
+      {slug && (
+        <PostItemDetal postSlug={slug} handleClose={handlePostDetailClose} />
       )}
     </motion.div>
   );

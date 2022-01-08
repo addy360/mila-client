@@ -6,6 +6,8 @@ export const POST_ACTIONS = {
   FETCHING_POST: "FETCHING_POST",
   ERROR: "ERROR",
   ERROR_CLEAR: "ERROR_CLEAR",
+  SLUG: "SLUG",
+  SLUG_CLEAR: "SLUG_CLEAR",
 };
 
 export const postReducer = (state, action) => {
@@ -56,6 +58,18 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         error: null,
+      };
+
+    case POST_ACTIONS.SLUG:
+      return {
+        ...state,
+        slug: action.payload,
+      };
+
+    case POST_ACTIONS.SLUG_CLEAR:
+      return {
+        ...state,
+        slug: null,
       };
 
     default:
