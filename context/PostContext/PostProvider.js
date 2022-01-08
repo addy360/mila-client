@@ -12,6 +12,10 @@ const PostProvider = ({ children }) => {
     error: null,
   });
 
+  const clearError = () => {
+    dispatch({ type: POST_ACTIONS.ERROR_CLEAR });
+  };
+
   const getPosts = async () => {
     dispatch({ type: POST_ACTIONS.FETCHING_POSTS });
     const res = await fetchAllPosts();
@@ -49,7 +53,9 @@ const PostProvider = ({ children }) => {
   };
 
   return (
-    <PostContext.Provider value={{ ...state, getPosts, getPost, getNextPosts }}>
+    <PostContext.Provider
+      value={{ ...state, getPosts, getPost, getNextPosts, clearError }}
+    >
       {children}
     </PostContext.Provider>
   );

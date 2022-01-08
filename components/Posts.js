@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { usePaginatedPosts } from "../hooks/useAllPosts";
 import { usePostContext } from "../hooks/useContext";
 import { useFramer } from "../hooks/useframer";
 import FeaturedPost from "./FeaturedPost";
@@ -7,13 +6,19 @@ import PostItem from "./PostItem";
 import PostItemDetal from "./PostItemDetal";
 const { motion, dropInVariants, fadeVariants } = useFramer();
 
-function Posts({ fetchNext, setFetchNext }) {
-  const { getPosts, getNextPosts, next, posts, posts_fetching, error } =
-    usePostContext();
+function Posts() {
+  const {
+    getPosts,
+    getNextPosts,
+    next,
+    posts,
+    posts_fetching,
+    error,
+    clearError,
+  } = usePostContext();
 
   useEffect(() => getPosts(), []);
 
-  // const paginatedPosts = usePaginatedPosts();
   const [postSlug, setPostSlug] = useState(null);
 
   const handlePostDetailClose = useCallback(() => setPostSlug(null), []);
@@ -22,17 +27,6 @@ function Posts({ fetchNext, setFetchNext }) {
   const handlePostDetail = useCallback((slug) => {
     setPostSlug(slug);
   });
-
-  // const handleFetchNext = () => {
-  //   paginatedPosts.queryData(paginatedPosts.nextUrl);
-  //   setFetchNext(false);
-  // };
-
-  // useEffect(() => {
-  //   if (fetchNext && !paginatedPosts.isFetching) {
-  //     handleFetchNext();
-  //   }
-  // }, [fetchNext]);
 
   return (
     <motion.div initial="hidden" animate="visible" variants={fadeVariants}>
@@ -86,7 +80,9 @@ function Posts({ fetchNext, setFetchNext }) {
         </div>
       )}
       {!posts_fetching && error && (
-        <h1 className="text-center text-prisec-900">{error}</h1>
+        <h1 className="text-center  text-red-600" onClick={() => clearError()}>
+          {error}
+        </h1>
       )}
 
       {postSlug && (

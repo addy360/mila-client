@@ -1,28 +1,14 @@
-import { useCallback, useState } from "react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Posts from "../components/Posts";
 import PostProvider from "../context/PostContext/PostProvider";
 
 export default function Home() {
-  const [fetchNext, setfetchnext] = useState(false);
-
-  const setfetchNextclbk = useCallback(() => setfetchnext(true));
-
-  const handleScroll = (e) => {
-    const { scrollHeight, scrollTop, clientHeight } = e.currentTarget;
-    if (scrollHeight === scrollTop + clientHeight) {
-      setfetchnext(true);
-    }
-  };
   return (
     <div className="h-screen overflow-y-hidden flex flex-col">
       <PostProvider>
         <Nav />
-        <div
-          className="container mx-auto flex-1 overflow-y-auto "
-          onScroll={handleScroll}
-        >
+        <div className="container mx-auto flex-1 overflow-y-auto ">
           {/* <div
           className="
                 flex flex-col
@@ -44,8 +30,7 @@ export default function Home() {
           </select>
         </div> */}
 
-          {/* posts */}
-          <Posts fetchNext={fetchNext} setFetchNext={setfetchNextclbk} />
+          <Posts />
         </div>
       </PostProvider>
       <Footer />

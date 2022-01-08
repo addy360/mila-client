@@ -5,6 +5,7 @@ export const POST_ACTIONS = {
   FETCH_POST: "FETCH_POST",
   FETCHING_POST: "FETCHING_POST",
   ERROR: "ERROR",
+  ERROR_CLEAR: "ERROR_CLEAR",
 };
 
 export const postReducer = (state, action) => {
@@ -49,6 +50,12 @@ export const postReducer = (state, action) => {
         posts_loading: false,
         posts: [...state.posts, ...action.payload.data.posts],
         next: action.payload.data.next,
+      };
+
+    case POST_ACTIONS.ERROR_CLEAR:
+      return {
+        ...state,
+        error: null,
       };
 
     default:

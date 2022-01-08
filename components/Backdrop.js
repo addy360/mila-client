@@ -1,6 +1,6 @@
 import React from "react";
 import { useFramer } from "../hooks/useframer";
-const { motion, fadeVariants } = useFramer();
+const { motion } = useFramer();
 
 function Backdrop({ children, handleClose }) {
   const handleClick = (e) => {
@@ -8,11 +8,9 @@ function Backdrop({ children, handleClose }) {
   };
   return (
     <motion.div
-      variants={fadeVariants}
-      initial="hidden"
-      animate="visible"
+      layout
       id="backdrop"
-      className="fixed z-50 inset-0 bg-white bg-opacity-75 grid place-content-center  "
+      className="fixed z-50 inset-0 bg-black bg-opacity-75 grid place-content-center  "
       onClick={handleClick}
     >
       {children}
