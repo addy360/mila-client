@@ -46,7 +46,7 @@ const PostProvider = ({ children }) => {
     if (!res.ok)
       return dispatch({
         type: POST_ACTIONS.ERROR,
-        payload: "Failed to fetch posts",
+        payload: "Failed to fetch post detail",
       });
 
     dispatch({ type: POST_ACTIONS.FETCH_POST, payload: res.data });

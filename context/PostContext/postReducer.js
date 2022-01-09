@@ -16,6 +16,7 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         posts_loading: true,
+        error: null,
       };
     case POST_ACTIONS.FETCH_POSTS:
       return {
@@ -31,6 +32,7 @@ export const postReducer = (state, action) => {
         ...state,
         post_loading: true,
         post: null,
+        error: null,
       };
 
     case POST_ACTIONS.FETCH_POST:
