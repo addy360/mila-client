@@ -1,6 +1,7 @@
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import Posts from "../components/Posts";
+import { usePostContext } from "../hooks/useContext";
 
 export default function Home() {
   return (

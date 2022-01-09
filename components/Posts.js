@@ -12,12 +12,22 @@ function Posts() {
     getNextPosts,
     next,
     posts,
-    posts_fetching,
+    posts_loading,
     error,
     clearError,
     slug,
     clearSlug,
   } = usePostContext();
+
+  const meAscii = `
+
+ █████╗ ██████╗ ██████╗ ██╗   ██╗██████╗  ██████╗  ██████╗ 
+██╔══██╗██╔══██╗██╔══██╗╚██╗ ██╔╝╚════██╗██╔════╝ ██╔═████╗
+███████║██║  ██║██║  ██║ ╚████╔╝  █████╔╝███████╗ ██║██╔██║
+██╔══██║██║  ██║██║  ██║  ╚██╔╝   ╚═══██╗██╔═══██╗████╔╝██║
+██║  ██║██████╔╝██████╔╝   ██║   ██████╔╝╚██████╔╝╚██████╔╝
+╚═╝  ╚═╝╚═════╝ ╚═════╝    ╚═╝   ╚═════╝  ╚═════╝  ╚═════╝ 
+  `;
 
   useEffect(() => getPosts(), []);
 
@@ -46,29 +56,25 @@ function Posts() {
           </div>
         </div>
       )}
-      {posts_fetching && (
-        <div className="grid place-content-center my-3">
-          <p className=" mb-4 py-2 px-4 border rounded filter drop-shadow-md shadow animate-pulse text-primary-800 font-light text-center  mx-auto inline-block">
-            fetching data...
-          </p>
-        </div>
+      {posts.length === 0 && (
+        <pre className="text-center animate-pulse">{meAscii}</pre>
       )}
 
       {posts.length > 0 && (
         <div className="grid place-content-center">
           <motion.button
-            disabled={posts_fetching}
+            disabled={posts_loading}
             onClick={() => getNextPosts(next)}
             initial="hidden"
             animate="visible"
             variants={fadeVariants}
             className="py-1 px-2 text-sm border font-thin text-primary-700 rounded-md shadow-md"
           >
-            {!posts_fetching ? "load more" : "loading more..."}
+            {!posts_loading ? "load more" : "loading more..."}
           </motion.button>
         </div>
       )}
-      {!posts_fetching && error && (
+      {!posts_loading && error && (
         <h1 className="text-center  text-red-600" onClick={() => clearError()}>
           {error}
         </h1>
