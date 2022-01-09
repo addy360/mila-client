@@ -44,6 +44,8 @@ export const postReducer = (state, action) => {
       return {
         ...state,
         error: action.payload,
+        posts_loading: false,
+        post_loading: false,
       };
 
     case POST_ACTIONS.FETCH_NEXT:
