@@ -57,7 +57,9 @@ function Posts() {
         </div>
       )}
       {posts.length === 0 && (
-        <pre className="text-center animate-pulse">{meAscii}</pre>
+        <pre className="text-center text-transparent bg-gradient-to-br from-prisec via-black to-secondary bg-clip-text animate-pulse px-6 scale-75 overflow-x-hidden md:scale-100">
+          {meAscii}
+        </pre>
       )}
 
       {posts.length > 0 && (
